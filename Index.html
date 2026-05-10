@@ -1,0 +1,1853 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>KÂI Social Club — Propuesta de Transformación Digital</title>
+<meta name="description" content="Propuesta de identidad digital premium para KÂI Social Club. Una experiencia cinematográfica que refleja el alma del lounge." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:           #0b0807;
+  --bg-2:         #110c0a;
+  --bg-3:         #1a120e;
+  --ink:          #f4ead8;
+  --ink-soft:     #c9b896;
+  --ink-mute:     #8a7860;
+  --ink-faint:    #5a4d3d;
+  --line:         rgba(244, 234, 216, 0.12);
+  --line-strong:  rgba(244, 234, 216, 0.22);
+  --amber:        #d99645;
+  --amber-glow:   #f0a857;
+  --amber-deep:   #a86a28;
+  --gold-soft:    #e8c896;
+  --espresso:     #2a1b12;
+  --noise:        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.42 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+body{
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.55;
+  letter-spacing: 0.005em;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Grain texture global */
+body::before{
+  content:'';
+  position: fixed; inset:0;
+  background-image: var(--noise);
+  opacity: .35;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 100;
+}
+
+img{ display:block; max-width:100%; }
+a{ color: inherit; text-decoration: none; }
+
+/* ─────── Tipografías y utilidades ─────── */
+.serif{ font-family: 'Fraunces', 'Cormorant Garamond', serif; font-weight: 400; }
+.serif-italic{ font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; }
+.eyebrow{
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+  color: var(--amber);
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.eyebrow::before{
+  content:'';
+  width: 32px;
+  height: 1px;
+  background: var(--amber);
+  display: inline-block;
+}
+.eyebrow.center{ justify-content:center; }
+.eyebrow.center::after{
+  content:'';
+  width: 32px;
+  height: 1px;
+  background: var(--amber);
+  display: inline-block;
+}
+
+.container{ max-width: 1320px; margin: 0 auto; padding: 0 36px; }
+.container-narrow{ max-width: 980px; margin: 0 auto; padding: 0 36px; }
+
+/* ─────── Navegación lateral / progreso ─────── */
+.nav-progress{
+  position: fixed;
+  top: 50%;
+  right: 32px;
+  transform: translateY(-50%);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  mix-blend-mode: difference;
+}
+.nav-progress a{
+  width: 22px;
+  height: 1px;
+  background: rgba(244,234,216,.4);
+  transition: all .45s cubic-bezier(.2,.7,.2,1);
+  display: block;
+}
+.nav-progress a:hover, .nav-progress a.active{
+  width: 44px;
+  background: var(--amber);
+}
+@media (max-width: 900px){ .nav-progress{ display:none; } }
+
+/* ─────── Top bar ─────── */
+.topbar{
+  position: fixed; top:0; left:0; right:0;
+  padding: 28px 48px;
+  display: flex; justify-content: space-between; align-items: center;
+  z-index: 40;
+  mix-blend-mode: difference;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(244,234,216,.85);
+}
+.topbar .mark{ font-family: 'Fraunces', serif; font-size: 18px; letter-spacing: 0.42em; font-weight: 400; }
+.topbar .meta{ display:flex; gap: 32px; }
+@media (max-width: 700px){
+  .topbar{ padding: 22px 24px; }
+  .topbar .meta span:first-child{ display:none; }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   01 · HERO CINEMATOGRÁFICO
+═════════════════════════════════════════════════════════════ */
+.hero{
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 50%, rgba(217, 130, 50, 0.32) 0%, rgba(168, 106, 40, 0.18) 25%, rgba(60, 35, 20, 0.4) 55%, transparent 80%),
+    radial-gradient(ellipse at 50% 100%, rgba(168, 106, 40, .15) 0%, transparent 50%),
+    linear-gradient(180deg, #0a0604 0%, #1a0f08 40%, #120a06 75%, #080503 100%);
+}
+
+/* Pared texturizada — múltiples capas para profundidad */
+.hero::before{
+  content:'';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 15% 25%, rgba(0,0,0,.55) 0%, transparent 35%),
+    radial-gradient(circle at 85% 75%, rgba(0,0,0,.6) 0%, transparent 40%),
+    radial-gradient(circle at 25% 80%, rgba(0,0,0,.45) 0%, transparent 35%),
+    radial-gradient(circle at 75% 20%, rgba(0,0,0,.5) 0%, transparent 38%);
+  z-index: 1;
+}
+
+/* Capa de textura tipo estuco */
+.hero::after{
+  content:'';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='wall'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.05  0 0 0 0 0.03  0 0 0 0 0.02  0 0 0 0.55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23wall)'/></svg>");
+  opacity: .85;
+  mix-blend-mode: multiply;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Glow cálido detrás del logotipo — emula retroiluminación real */
+.hero-glow{
+  position: absolute;
+  width: 1100px; height: 700px;
+  top: 48%; left: 50%;
+  transform: translate(-50%, -50%);
+  background:
+    radial-gradient(ellipse 50% 60% at 50% 50%, rgba(255, 180, 90, 0.42) 0%, rgba(217, 150, 69, 0.22) 25%, rgba(168, 106, 40, 0.1) 50%, transparent 75%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 1;
+  animation: pulse 6s ease-in-out infinite;
+}
+@keyframes pulse{
+  0%,100%{ opacity: .9; transform: translate(-50%,-50%) scale(1); }
+  50%{ opacity: 1; transform: translate(-50%,-50%) scale(1.05); }
+}
+
+.hero-content{
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 24px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.hero-tag{
+  font-size: 11px;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 56px;
+  opacity: 0;
+  animation: fadeUp 1.4s .4s ease-out forwards;
+}
+
+.hero-logo{
+  width: clamp(280px, 58vw, 760px);
+  height: auto;
+  margin: 0 auto 40px;
+  display: block;
+  opacity: 0;
+  animation: logoReveal 2s .5s cubic-bezier(.2,.7,.2,1) forwards;
+  filter: drop-shadow(0 0 40px rgba(240, 168, 87, .35)) drop-shadow(0 0 80px rgba(217, 150, 69, .25));
+}
+.hero-logo .letter-fill{
+  fill: url(#kaiGradient);
+}
+.hero-logo .letter-glow{
+  fill: none;
+  stroke: #ffd089;
+  stroke-width: 1.2;
+  opacity: .55;
+  filter: blur(2px);
+}
+.hero-logo .sub-line{
+  stroke: #d99645;
+  stroke-width: 1.5;
+  fill: none;
+  opacity: .85;
+}
+.hero-logo .sub-text{
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.55em;
+  fill: url(#kaiGradient);
+  text-anchor: middle;
+}
+@keyframes logoReveal{
+  0%{ opacity: 0; transform: translateY(30px) scale(.96); filter: drop-shadow(0 0 0 transparent) blur(8px); }
+  60%{ opacity: 1; filter: drop-shadow(0 0 60px rgba(240, 168, 87, .5)) drop-shadow(0 0 120px rgba(217, 150, 69, .3)) blur(0); }
+  100%{ opacity: 1; transform: translateY(0) scale(1); filter: drop-shadow(0 0 40px rgba(240, 168, 87, .35)) drop-shadow(0 0 80px rgba(217, 150, 69, .25)); }
+}
+
+.hero-divider{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin: 0 auto 44px;
+  opacity: 0;
+  animation: fadeUp 1.4s 1s ease-out forwards;
+}
+.hero-divider .line{
+  width: 60px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--amber), transparent);
+}
+.hero-divider .dot{
+  width: 4px; height: 4px;
+  background: var(--amber);
+  border-radius: 50%;
+  box-shadow: 0 0 14px var(--amber-glow);
+}
+
+.hero-sub{
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(18px, 2.2vw, 26px);
+  color: var(--ink-soft);
+  max-width: 640px;
+  margin: 0 auto 64px;
+  line-height: 1.5;
+  opacity: 0;
+  animation: fadeUp 1.4s 1.2s ease-out forwards;
+}
+
+.hero-meta{
+  display: flex;
+  justify-content: center;
+  gap: clamp(24px, 6vw, 80px);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  opacity: 0;
+  animation: fadeUp 1.4s 1.5s ease-out forwards;
+}
+.hero-meta span{ position: relative; }
+.hero-meta span::before{
+  content: '';
+  position: absolute;
+  left: -32px;
+  top: 50%;
+  width: 4px; height: 4px;
+  background: var(--amber);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+.hero-meta span:first-child::before{ display:none; }
+
+@keyframes fadeUp{
+  from{ opacity: 0; transform: translateY(40px); }
+  to  { opacity: 1; transform: translateY(0); }
+}
+
+.scroll-cue{
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  opacity: 0;
+  animation: fadeUp 1.4s 1.8s ease-out forwards;
+}
+.scroll-cue::after{
+  content: '';
+  width: 1px; height: 50px;
+  background: linear-gradient(180deg, var(--amber), transparent);
+  animation: scrollLine 2.4s ease-in-out infinite;
+}
+@keyframes scrollLine{
+  0%{ transform: scaleY(0); transform-origin: top; }
+  50%{ transform: scaleY(1); transform-origin: top; }
+  51%{ transform: scaleY(1); transform-origin: bottom; }
+  100%{ transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   SECCIONES BASE
+═════════════════════════════════════════════════════════════ */
+section{
+  position: relative;
+  padding: clamp(100px, 16vh, 180px) 0;
+}
+.section-num{
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--ink-mute);
+  letter-spacing: 0.05em;
+  margin-bottom: 24px;
+}
+.section-title{
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(36px, 5.5vw, 72px);
+  line-height: 1.05;
+  letter-spacing: -0.018em;
+  color: var(--ink);
+  margin-bottom: 32px;
+}
+.section-title em{ font-style: italic; color: var(--amber); }
+
+/* ═════════════════════════════════════════════════════════════
+   02 · INTRO ESTRATÉGICA — Manifiesto
+═════════════════════════════════════════════════════════════ */
+.intro{
+  background: linear-gradient(180deg, #0b0606 0%, #0d0807 100%);
+  border-top: 1px solid var(--line);
+}
+.intro-grid{
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 100px;
+  align-items: start;
+}
+.intro-left .label{ position: sticky; top: 120px; }
+.intro-quote{
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(28px, 3.6vw, 48px);
+  line-height: 1.25;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+}
+.intro-quote em{ font-style: italic; color: var(--amber); }
+.intro-quote .accent{
+  display: block;
+  margin-top: 28px;
+  font-size: 0.4em;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--ink-mute);
+  letter-spacing: 0.04em;
+  font-family: 'Fraunces', serif;
+}
+.intro-quote::before{
+  content: '"';
+  font-family: 'Fraunces', serif;
+  font-size: 120px;
+  line-height: 0;
+  color: var(--amber);
+  opacity: .4;
+  display: block;
+  margin-bottom: 30px;
+  font-style: italic;
+}
+@media (max-width: 900px){
+  .intro-grid{ grid-template-columns: 1fr; gap: 50px; }
+  .intro-left .label{ position: static; }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   03 · POTENCIAL DETECTADO
+═════════════════════════════════════════════════════════════ */
+.potential{
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+}
+.potential-header{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 90px;
+}
+.potential-header p{
+  color: var(--ink-soft);
+  font-size: 17px;
+  line-height: 1.7;
+  max-width: 480px;
+}
+
+.potential-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.potential-card{
+  background: var(--bg);
+  padding: 48px 40px;
+  position: relative;
+  transition: background .6s ease;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+}
+.potential-card:hover{ background: var(--bg-2); }
+.potential-card .ic{
+  width: 36px;
+  height: 1px;
+  background: var(--amber);
+  margin-bottom: 32px;
+}
+.potential-card h3{
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: -0.005em;
+  margin-bottom: 16px;
+  color: var(--ink);
+}
+.potential-card p{
+  color: var(--ink-mute);
+  font-size: 14.5px;
+  line-height: 1.65;
+  flex-grow: 1;
+}
+.potential-card .num{
+  position: absolute;
+  top: 28px; right: 32px;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--amber);
+  opacity: .7;
+}
+
+@media (max-width: 900px){
+  .potential-header{ grid-template-columns: 1fr; gap: 32px; }
+  .potential-grid{ grid-template-columns: 1fr; }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   04 · DIAGNÓSTICO — Análisis percepción digital
+═════════════════════════════════════════════════════════════ */
+.diagnosis{
+  background: linear-gradient(180deg, #0b0606 0%, #0e0805 50%, #0b0606 100%);
+  border-top: 1px solid var(--line);
+  position: relative;
+}
+.diagnosis::before{
+  content:'';
+  position: absolute;
+  top:0; left: 50%;
+  transform: translateX(-50%);
+  width: 1px; height: 80px;
+  background: linear-gradient(180deg, var(--amber), transparent);
+}
+.diagnosis-header{
+  text-align: center;
+  margin-bottom: 100px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.diagnosis-header .eyebrow{ margin-bottom: 24px; }
+.diagnosis-header p{
+  color: var(--ink-soft);
+  font-size: 17px;
+  line-height: 1.7;
+  margin-top: 24px;
+}
+
+.compare{
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 60px;
+  align-items: stretch;
+}
+.compare-col{
+  padding: 56px 48px;
+  border: 1px solid var(--line);
+  position: relative;
+  background: rgba(11,8,7,.5);
+  backdrop-filter: blur(8px);
+}
+.compare-col.now{ border-color: rgba(244,234,216,.08); }
+.compare-col.future{
+  border-color: rgba(217,150,69,.35);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(217,150,69,.08), transparent 60%),
+    rgba(11,8,7,.5);
+  box-shadow: 0 30px 80px -30px rgba(217,150,69,.15);
+}
+.compare-col .tag{
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  display: inline-block;
+}
+.compare-col.now .tag{ color: var(--ink-mute); }
+.compare-col.future .tag{ color: var(--amber); }
+
+.compare-col h3{
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 1.2;
+  margin-bottom: 32px;
+  letter-spacing: -0.01em;
+}
+.compare-col.now h3{ color: var(--ink-soft); }
+.compare-col.future h3{ color: var(--ink); }
+.compare-col.future h3 em{ font-style: italic; color: var(--amber); }
+
+.compare-list{ list-style: none; }
+.compare-list li{
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+  font-size: 15px;
+  color: var(--ink-mute);
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  line-height: 1.55;
+}
+.compare-col.future .compare-list li{ color: var(--ink-soft); }
+.compare-list li:last-child{ border-bottom: 1px solid var(--line); }
+.compare-list li::before{
+  content: '—';
+  color: var(--ink-faint);
+  flex-shrink: 0;
+}
+.compare-col.future .compare-list li::before{ color: var(--amber); }
+
+.compare-arrow{
+  align-self: center;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  color: var(--amber);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.compare-arrow .line{
+  width: 1px; height: 80px;
+  background: linear-gradient(180deg, transparent, var(--amber), transparent);
+}
+.compare-arrow span{
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-style: normal;
+  font-family: 'Inter', sans-serif;
+}
+
+@media (max-width: 900px){
+  .compare{ grid-template-columns: 1fr; gap: 30px; }
+  .compare-arrow{ flex-direction: row; }
+  .compare-arrow .line{ width: 80px; height: 1px; background: linear-gradient(90deg, transparent, var(--amber), transparent); }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   05 · OPORTUNIDAD — Big statement
+═════════════════════════════════════════════════════════════ */
+.opportunity{
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.opportunity::before{
+  content:'';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 800px; height: 800px;
+  background: radial-gradient(circle, rgba(217,150,69,.08) 0%, transparent 60%);
+  filter: blur(60px);
+  pointer-events: none;
+}
+.opportunity-content{ position: relative; z-index: 2; }
+.opportunity-statement{
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(40px, 6vw, 88px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  max-width: 1100px;
+  margin: 40px auto 0;
+}
+.opportunity-statement em{ font-style: italic; color: var(--amber); }
+.opportunity-stats{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-top: 100px;
+  background: var(--line);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.opportunity-stat{
+  background: var(--bg);
+  padding: 56px 32px;
+}
+.opportunity-stat .num{
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(48px, 6vw, 88px);
+  line-height: 1;
+  background: linear-gradient(180deg, var(--gold-soft) 0%, var(--amber) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+.opportunity-stat .num span{ font-size: .5em; vertical-align: super; opacity: .7; }
+.opportunity-stat .label{
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+@media (max-width: 760px){
+  .opportunity-stats{ grid-template-columns: 1fr; }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   06 · OBJETIVOS DEL PROYECTO
+═════════════════════════════════════════════════════════════ */
+.objectives{
+  background: linear-gradient(180deg, #0b0606 0%, #0e0805 100%);
+  border-top: 1px solid var(--line);
+}
+.objectives-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+}
+.objectives-list{ list-style: none; }
+.obj-item{
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 24px;
+  padding: 32px 0;
+  border-top: 1px solid var(--line);
+  align-items: start;
+}
+.obj-item:last-child{ border-bottom: 1px solid var(--line); }
+.obj-item .num{
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 28px;
+  color: var(--amber);
+  line-height: 1;
+}
+.obj-item h4{
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: 21px;
+  margin-bottom: 8px;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+}
+.obj-item p{
+  font-size: 14.5px;
+  color: var(--ink-mute);
+  line-height: 1.6;
+}
+@media (max-width: 900px){
+  .objectives-grid{ grid-template-columns: 1fr; gap: 40px; }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   07 · CONCEPTO CREATIVO
+═════════════════════════════════════════════════════════════ */
+.concept{
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+.concept-tagline{
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(28px, 3.4vw, 44px);
+  line-height: 1.4;
+  color: var(--ink-soft);
+  max-width: 880px;
+  margin: 32px auto 0;
+}
+.concept-tagline em{ color: var(--amber); font-style: italic; }
+
+.concept-pillars{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-top: 100px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.pillar{
+  background: var(--bg);
+  padding: 60px 40px;
+  text-align: left;
+  transition: background .6s;
+  min-height: 320px;
+}
+.pillar:hover{ background: var(--bg-2); }
+.pillar .symbol{
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 60px;
+  line-height: 1;
+  color: var(--amber);
+  margin-bottom: 32px;
+  display: block;
+}
+.pillar h4{
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: 22px;
+  margin-bottom: 16px;
+  color: var(--ink);
+}
+.pillar p{
+  color: var(--ink-mute);
+  font-size: 14.5px;
+  line-height: 1.65;
+}
+@media (max-width: 900px){
+  .concept-pillars{ grid-template-columns: 1fr; }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   08 · EXPERIENCIA VISUAL — Moodboard / paleta
+═════════════════════════════════════════════════════════════ */
+.experience{
+  background: linear-gradient(180deg, #0b0606 0%, #0e0805 100%);
+  border-top: 1px solid var(--line);
+}
+.exp-header{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 90px;
+}
+.exp-header p{
+  color: var(--ink-soft);
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 480px;
+}
+
+.palette{
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  height: 200px;
+  border: 1px solid var(--line);
+  margin-bottom: 60px;
+  position: relative;
+  overflow: hidden;
+}
+.swatch{
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  cursor: default;
+  transition: flex .6s ease;
+}
+.swatch:hover{ flex: 1.3; }
+.swatch .info{
+  font-size: 9.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  line-height: 1.6;
+}
+.swatch .info .hex{
+  display: block;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0;
+  text-transform: none;
+  margin-top: 6px;
+  opacity: .7;
+}
+.s1{ background: #050302; color: #c9b896; }
+.s2{ background: #1a120e; color: #c9b896; }
+.s3{ background: #2a1b12; color: #e8c896; }
+.s4{ background: #a86a28; color: #0b0807; }
+.s5{ background: #d99645; color: #0b0807; }
+.s6{ background: #e8c896; color: #1a120e; }
+
+.exp-pairs{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 70px;
+}
+.exp-pair{
+  border: 1px solid var(--line);
+  padding: 50px 44px;
+  background: rgba(11,8,7,.4);
+  backdrop-filter: blur(6px);
+}
+.exp-pair .pair-tag{
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 28px;
+}
+.exp-pair .display{
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: 56px;
+  line-height: 1;
+  margin-bottom: 8px;
+  letter-spacing: -0.018em;
+}
+.exp-pair .display em{ font-style: italic; }
+.exp-pair .display-info{
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 32px;
+}
+.exp-pair .body-sample{
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 14.5px;
+  color: var(--ink-mute);
+  line-height: 1.7;
+}
+
+@media (max-width: 900px){
+  .exp-header{ grid-template-columns: 1fr; gap: 32px; }
+  .exp-pairs{ grid-template-columns: 1fr; }
+  .palette{ grid-template-columns: repeat(3, 1fr); height: auto; }
+  .swatch{ min-height: 120px; }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   09 · ARQUITECTURA / SECCIONES DE LA WEB
+═════════════════════════════════════════════════════════════ */
+.architecture{
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+}
+.arch-grid{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 80px;
+  align-items: start;
+}
+.arch-grid .label{ position: sticky; top: 120px; }
+.arch-list{ list-style: none; }
+.arch-item{
+  display: grid;
+  grid-template-columns: 80px 220px 1fr;
+  gap: 32px;
+  padding: 32px 0;
+  border-top: 1px solid var(--line);
+  align-items: center;
+  transition: padding-left .5s ease;
+}
+.arch-item:last-child{ border-bottom: 1px solid var(--line); }
+.arch-item:hover{ padding-left: 12px; }
+.arch-item .num{
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--ink-mute);
+}
+.arch-item h4{
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+}
+.arch-item p{
+  font-size: 14px;
+  color: var(--ink-mute);
+  line-height: 1.55;
+}
+.arch-item:hover h4{ color: var(--amber); }
+
+@media (max-width: 900px){
+  .arch-grid{ grid-template-columns: 1fr; gap: 40px; }
+  .arch-grid .label{ position: static; }
+  .arch-item{ grid-template-columns: 50px 1fr; gap: 16px; }
+  .arch-item p{ grid-column: 1 / -1; padding-top: 8px; }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   10 · BENEFICIOS — Doble columna comercial / branding
+═════════════════════════════════════════════════════════════ */
+.benefits{
+  background: linear-gradient(180deg, #0b0606 0%, #0e0805 50%, #0b0606 100%);
+  border-top: 1px solid var(--line);
+}
+.benefits-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  margin-top: 80px;
+}
+.benefits-col{
+  background: var(--bg);
+  padding: 64px 56px;
+}
+.benefits-col h3{
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: 36px;
+  margin-bottom: 8px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.benefits-col h3 em{ font-style: italic; color: var(--amber); }
+.benefits-col .sub{
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 50px;
+}
+.ben-list{ list-style: none; }
+.ben-list li{
+  padding: 22px 0;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 18px;
+  align-items: start;
+}
+.ben-list li:last-child{ border-bottom: 1px solid var(--line); }
+.ben-list li .check{
+  font-family: 'Fraunces', serif;
+  color: var(--amber);
+  font-size: 18px;
+  line-height: 1.2;
+  font-style: italic;
+}
+.ben-list li strong{
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: 16.5px;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 4px;
+}
+.ben-list li span{
+  font-size: 13.5px;
+  color: var(--ink-mute);
+  line-height: 1.55;
+  display: block;
+}
+
+@media (max-width: 900px){
+  .benefits-grid{ grid-template-columns: 1fr; }
+  .benefits-col{ padding: 48px 32px; }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   11 · MOBILE EXPERIENCE
+═════════════════════════════════════════════════════════════ */
+.mobile-section{
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+  overflow: hidden;
+}
+.mobile-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: center;
+}
+.mobile-text h2{
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(36px, 5vw, 60px);
+  line-height: 1.05;
+  letter-spacing: -0.018em;
+  margin-bottom: 28px;
+}
+.mobile-text h2 em{ font-style: italic; color: var(--amber); }
+.mobile-text p{
+  color: var(--ink-soft);
+  font-size: 16px;
+  line-height: 1.75;
+  margin-bottom: 18px;
+}
+
+/* Phone mockup CSS-only */
+.phone-stage{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 600px;
+}
+.phone-stage::before{
+  content:'';
+  position: absolute;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(217,150,69,.15), transparent 60%);
+  filter: blur(40px);
+  z-index: 0;
+}
+.phone{
+  position: relative;
+  width: 280px;
+  height: 580px;
+  background: #050302;
+  border-radius: 44px;
+  border: 1.5px solid #2a1b12;
+  box-shadow:
+    0 0 0 6px #1a120e,
+    0 50px 100px -20px rgba(0,0,0,.8),
+    0 0 80px -10px rgba(217,150,69,.3),
+    inset 0 0 0 1px rgba(244,234,216,.05);
+  z-index: 1;
+  overflow: hidden;
+  transform: rotate(-3deg);
+  transition: transform 1s cubic-bezier(.2,.7,.2,1);
+}
+.phone:hover{ transform: rotate(0deg) scale(1.02); }
+
+.phone .notch{
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px; height: 26px;
+  background: #050302;
+  border-radius: 14px;
+  z-index: 5;
+}
+.phone .screen{
+  position: absolute;
+  inset: 8px;
+  border-radius: 36px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(217,150,69,.35), transparent 60%),
+    linear-gradient(180deg, #0d0805 0%, #0b0606 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 22px 30px;
+  text-align: center;
+}
+.phone .screen .mini-eyebrow{
+  font-size: 7px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 28px;
+}
+.phone .screen .mini-title{
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: 56px;
+  line-height: 1;
+  background: linear-gradient(180deg, #fbe9c3, #d99645 70%, #a86a28);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 14px;
+  letter-spacing: -0.02em;
+}
+.phone .screen .mini-italic{
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 11px;
+  color: var(--ink-soft);
+  margin-bottom: 30px;
+  padding: 0 16px;
+  line-height: 1.4;
+}
+.phone .screen .mini-divider{
+  width: 24px; height: 1px;
+  background: var(--amber);
+  margin-bottom: 22px;
+}
+.phone .screen .mini-cta{
+  border: 1px solid var(--amber);
+  padding: 11px 22px;
+  font-size: 8px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 28px;
+}
+.phone .screen .mini-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  width: 100%;
+}
+.phone .screen .mini-card{
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, rgba(217,150,69,.18), rgba(168,106,40,.06));
+  border: 1px solid rgba(217,150,69,.18);
+  border-radius: 4px;
+  display: flex;
+  align-items: end;
+  padding: 8px;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 9px;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 900px){
+  .mobile-grid{ grid-template-columns: 1fr; gap: 40px; }
+  .phone-stage{ height: 520px; }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   12 · CIERRE — Closing manifesto
+═════════════════════════════════════════════════════════════ */
+.closing{
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(217,150,69,.15) 0%, transparent 50%),
+    linear-gradient(180deg, #0b0606 0%, #050302 100%);
+  border-top: 1px solid var(--line);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 180px 0;
+}
+.closing::before{
+  content:'';
+  position: absolute;
+  inset:0;
+  background-image: var(--noise);
+  opacity: .25;
+  mix-blend-mode: overlay;
+}
+.closing-mark{
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--amber);
+  letter-spacing: 0.05em;
+  margin-bottom: 36px;
+  position: relative;
+  z-index: 2;
+}
+.closing-statement{
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(40px, 6.5vw, 100px);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(180deg, #fbe9c3 0%, #e8c896 50%, #d99645 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.closing-statement em{ font-style: italic; }
+
+.closing-sub{
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: clamp(18px, 2vw, 24px);
+  color: var(--ink-soft);
+  max-width: 620px;
+  margin: 50px auto 80px;
+  line-height: 1.5;
+  position: relative;
+  z-index: 2;
+}
+
+.closing-cta{
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  padding: 22px 56px;
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: linear-gradient(135deg, var(--gold-soft), var(--amber) 50%, var(--amber-deep));
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  transition: all .5s cubic-bezier(.2,.7,.2,1);
+  box-shadow: 0 20px 40px -10px rgba(217,150,69,.4);
+}
+.closing-cta:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 30px 60px -10px rgba(217,150,69,.6);
+}
+
+.closing-meta{
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  gap: clamp(24px, 5vw, 60px);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  position: relative;
+  z-index: 2;
+}
+
+/* ─────── Footer ─────── */
+footer{
+  border-top: 1px solid var(--line);
+  padding: 60px 36px;
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  background: #050302;
+}
+footer .mark-foot{
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--amber);
+  letter-spacing: 0.12em;
+  text-transform: none;
+  margin-bottom: 18px;
+}
+
+/* ─────── Reveal animations on scroll ─────── */
+.reveal{ opacity: 0; transform: translateY(40px); transition: all 1.2s cubic-bezier(.2,.7,.2,1); }
+.reveal.visible{ opacity: 1; transform: translateY(0); }
+.reveal-delay-1{ transition-delay: .15s; }
+.reveal-delay-2{ transition-delay: .3s; }
+.reveal-delay-3{ transition-delay: .45s; }
+</style>
+</head>
+
+<body>
+
+<!-- ───── Top bar ───── -->
+<div class="topbar">
+  <div class="mark">KÂI</div>
+  <div class="meta">
+    <span>Aguadulce · Almería</span>
+    <span>MMXXVI</span>
+  </div>
+</div>
+
+<!-- ───── Nav progreso ───── -->
+<nav class="nav-progress">
+  <a href="#hero" data-section="hero" class="active"></a>
+  <a href="#intro" data-section="intro"></a>
+  <a href="#potential" data-section="potential"></a>
+  <a href="#diagnosis" data-section="diagnosis"></a>
+  <a href="#opportunity" data-section="opportunity"></a>
+  <a href="#objectives" data-section="objectives"></a>
+  <a href="#concept" data-section="concept"></a>
+  <a href="#architecture" data-section="architecture"></a>
+  <a href="#benefits" data-section="benefits"></a>
+  <a href="#mobile" data-section="mobile"></a>
+  <a href="#closing" data-section="closing"></a>
+</nav>
+
+<!-- ═══════════════ 01 · HERO ═══════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Propuesta de Identidad Digital · MMXXVI</div>
+    <svg class="hero-logo" viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" aria-label="KÂI Social Club">
+      <defs>
+        <linearGradient id="kaiGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#fbe9c3"/>
+          <stop offset="35%" stop-color="#f0c878"/>
+          <stop offset="70%" stop-color="#d99645"/>
+          <stop offset="100%" stop-color="#a86a28"/>
+        </linearGradient>
+        <filter id="innerGlow" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="3" result="blur"/>
+          <feMerge>
+            <feMergeNode in="blur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+
+      <!-- KÂI letterforms · Fraunces-style serif -->
+      <g filter="url(#innerGlow)">
+        <text x="400" y="240"
+              text-anchor="middle"
+              font-family="'Fraunces', 'Cormorant Garamond', serif"
+              font-weight="400"
+              font-size="280"
+              letter-spacing="14"
+              fill="url(#kaiGradient)">KÂI</text>
+      </g>
+
+      <!-- Decorative dashes flanking subtitle -->
+      <line class="sub-line" x1="200" y1="305" x2="245" y2="305"/>
+      <line class="sub-line" x1="555" y1="305" x2="600" y2="305"/>
+
+      <!-- SOCIAL CLUB subtitle -->
+      <text class="sub-text" x="400" y="312">SOCIAL CLUB</text>
+    </svg>
+    <p class="hero-sub">Una nueva experiencia digital para uno de los social clubs más sofisticados del litoral mediterráneo.</p>
+    <div class="hero-meta">
+      <span>Social Club</span>
+      <span>Lounge Premium</span>
+      <span>Aguadulce</span>
+    </div>
+  </div>
+  <div class="scroll-cue">Desliza para descubrir</div>
+</section>
+
+<!-- ═══════════════ 02 · INTRO ═══════════════ -->
+<section class="intro" id="intro">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-left">
+        <div class="label">
+          <div class="section-num reveal">01 — Manifiesto</div>
+          <div class="eyebrow reveal">El punto de partida</div>
+        </div>
+      </div>
+      <div class="intro-right">
+        <p class="intro-quote reveal">
+          KÂI ya tiene la <em>estética</em> y el <em>ambiente</em> de una marca premium. Falta que su presencia digital esté a la altura del lugar.
+          <span class="accent">— Una observación honesta tras conocer su universo visual.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 03 · POTENCIAL ═══════════════ -->
+<section class="potential" id="potential">
+  <div class="container">
+    <div class="potential-header">
+      <div>
+        <div class="section-num reveal">02 — Potencial Detectado</div>
+        <h2 class="section-title reveal">Una marca con <em>alma cinematográfica</em>.</h2>
+      </div>
+      <p class="reveal reveal-delay-1">
+        Tras analizar su universo visual, identificamos elementos que rara vez convergen en un mismo proyecto. KÂI ya construye, sin saberlo, un lenguaje de marca digno de una capital europea.
+      </p>
+    </div>
+    <div class="potential-grid">
+      <div class="potential-card reveal">
+        <span class="num">i</span>
+        <span class="ic"></span>
+        <h3>Iluminación cinematográfica</h3>
+        <p>Tonos ámbar cálidos, contraluces dorados y una atmósfera nocturna que transmite intimidad y exclusividad de manera natural.</p>
+      </div>
+      <div class="potential-card reveal reveal-delay-1">
+        <span class="num">ii</span>
+        <span class="ic"></span>
+        <h3>Interiorismo elegante</h3>
+        <p>Mobiliario seleccionado, neones cálidos sobre paredes oscuras y una composición espacial que ya proyecta categoría premium.</p>
+      </div>
+      <div class="potential-card reveal reveal-delay-2">
+        <span class="num">iii</span>
+        <span class="ic"></span>
+        <h3>Identidad sólida</h3>
+        <p>Logotipo serif, tipografía con personalidad y una paleta cromática coherente. Una base de branding sorprendentemente madura.</p>
+      </div>
+      <div class="potential-card reveal">
+        <span class="num">iv</span>
+        <span class="ic"></span>
+        <h3>Concepto claro</h3>
+        <p>No es un bar más: es un social club. Esa diferencia de categoría merece ser comunicada con un lenguaje propio y aspiracional.</p>
+      </div>
+      <div class="potential-card reveal reveal-delay-1">
+        <span class="num">v</span>
+        <span class="ic"></span>
+        <h3>Producto fotogénico</h3>
+        <p>Cocktails, food y shishas se prestan a un tratamiento visual editorial. Material crudo de gran calidad que merece amplificación.</p>
+      </div>
+      <div class="potential-card reveal reveal-delay-2">
+        <span class="num">vi</span>
+        <span class="ic"></span>
+        <h3>Audiencia local cualificada</h3>
+        <p>Aguadulce y su entorno reúnen un público joven, viajado y sensible al diseño. Hay terreno para construir una marca lifestyle reconocible.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 04 · DIAGNÓSTICO ═══════════════ -->
+<section class="diagnosis" id="diagnosis">
+  <div class="container-narrow">
+    <div class="diagnosis-header">
+      <div class="eyebrow center reveal">03 — Diagnóstico digital</div>
+      <h2 class="section-title reveal" style="margin-top: 32px;">Donde la <em>experiencia</em> termina demasiado pronto.</h2>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="compare">
+      <div class="compare-col now reveal">
+        <span class="tag">Ahora</span>
+        <h3>Una marca encerrada en Instagram.</h3>
+        <ul class="compare-list">
+          <li>Toda la experiencia digital depende de un único feed.</li>
+          <li>Sin sitio web propio, no existe storytelling de marca.</li>
+          <li>La búsqueda en Google no refleja la categoría del lugar.</li>
+          <li>No hay reservas online: fricción innecesaria para el cliente.</li>
+          <li>La percepción digital se queda corta frente al ambiente real.</li>
+          <li>No existe un destino digital al que dirigir campañas.</li>
+        </ul>
+      </div>
+
+      <div class="compare-arrow reveal reveal-delay-1">
+        <span class="line"></span>
+        <span>Hacia</span>
+        <span class="line"></span>
+      </div>
+
+      <div class="compare-col future reveal reveal-delay-2">
+        <span class="tag">Después</span>
+        <h3>Una <em>marca lifestyle</em> con presencia propia.</h3>
+        <ul class="compare-list">
+          <li>Una web cinematográfica que extiende el ambiente del local.</li>
+          <li>Storytelling propio, narrativa visual y experiencia inmersiva.</li>
+          <li>Posicionamiento en Google a la altura de la marca.</li>
+          <li>Reservas online integradas, sin fricción ni intermediarios.</li>
+          <li>Coherencia total entre el universo físico y digital.</li>
+          <li>Un destino digital donde escalar marketing, eventos y campañas.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 05 · OPORTUNIDAD ═══════════════ -->
+<section class="opportunity" id="opportunity">
+  <div class="opportunity-content">
+    <div class="container-narrow">
+      <div class="eyebrow center reveal">04 — La Oportunidad</div>
+      <h2 class="opportunity-statement reveal reveal-delay-1">
+        Convertir a KÂI en el <em>referente digital</em> del lifestyle nocturno premium del litoral almeriense.
+      </h2>
+    </div>
+
+    <div class="container">
+      <div class="opportunity-stats">
+        <div class="opportunity-stat reveal">
+          <div class="num">+72<span>%</span></div>
+          <div class="label">Tráfico cualificado a través de búsqueda local</div>
+        </div>
+        <div class="opportunity-stat reveal reveal-delay-1">
+          <div class="num">3<span>×</span></div>
+          <div class="label">Multiplicador de percepción de valor de marca</div>
+        </div>
+        <div class="opportunity-stat reveal reveal-delay-2">
+          <div class="num">24<span>/7</span></div>
+          <div class="label">Reservas y descubrimiento sin intermediarios</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 06 · OBJETIVOS ═══════════════ -->
+<section class="objectives" id="objectives">
+  <div class="container">
+    <div class="objectives-grid">
+      <div>
+        <div class="section-num reveal">05 — Objetivos</div>
+        <h2 class="section-title reveal">Lo que la nueva web debe <em>conseguir</em>.</h2>
+        <p class="reveal reveal-delay-1" style="color: var(--ink-soft); margin-top: 24px; font-size: 16px; line-height: 1.7;">
+          Cada decisión del proyecto está orientada a un resultado tangible. No diseñamos por estética: diseñamos para elevar percepción, generar deseo y traducir esa magia en visitas, reservas y reconocimiento.
+        </p>
+      </div>
+
+      <ul class="objectives-list">
+        <li class="obj-item reveal">
+          <span class="num">01</span>
+          <div>
+            <h4>Elevar la percepción de marca</h4>
+            <p>Que cualquier persona que llegue a la web sienta inmediatamente que está frente a un lugar premium.</p>
+          </div>
+        </li>
+        <li class="obj-item reveal reveal-delay-1">
+          <span class="num">02</span>
+          <div>
+            <h4>Generar deseo de visitar</h4>
+            <p>Una experiencia inmersiva que active la curiosidad y la anticipación antes incluso de cruzar la puerta.</p>
+          </div>
+        </li>
+        <li class="obj-item reveal reveal-delay-2">
+          <span class="num">03</span>
+          <div>
+            <h4>Aumentar reservas y visitas</h4>
+            <p>Sistema de reservas online integrado, claro y elegante. Conversión sin fricción.</p>
+          </div>
+        </li>
+        <li class="obj-item reveal">
+          <span class="num">04</span>
+          <div>
+            <h4>Posicionarse en Google</h4>
+            <p>SEO local optimizado para que KÂI aparezca cuando alguien busque planes premium en la zona.</p>
+          </div>
+        </li>
+        <li class="obj-item reveal reveal-delay-1">
+          <span class="num">05</span>
+          <div>
+            <h4>Potenciar Instagram</h4>
+            <p>La web no compite con el feed, lo amplifica. Un destino donde escalar todo lo que ya funciona en redes.</p>
+          </div>
+        </li>
+        <li class="obj-item reveal reveal-delay-2">
+          <span class="num">06</span>
+          <div>
+            <h4>Construir una marca lifestyle</h4>
+            <p>Sentar las bases para que KÂI evolucione de bar a marca reconocible más allá de Aguadulce.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 07 · CONCEPTO CREATIVO ═══════════════ -->
+<section class="concept" id="concept">
+  <div class="container-narrow">
+    <div class="eyebrow center reveal">06 — Concepto Creativo</div>
+    <h2 class="section-title reveal reveal-delay-1" style="margin-top: 32px;">No es una web. Es una <em>extensión</em> del ambiente.</h2>
+    <p class="concept-tagline reveal reveal-delay-2">
+      Cuando alguien entra a KÂI, no entra a un sitio cualquiera: entra a un <em>universo</em>. La nueva web traduce esa misma sensación al mundo digital, desde la primera fracción de segundo.
+    </p>
+  </div>
+
+  <div class="container">
+    <div class="concept-pillars">
+      <div class="pillar reveal">
+        <span class="symbol">i.</span>
+        <h4>Inmersión</h4>
+        <p>Imágenes en pantalla completa, luz cálida, transiciones sutiles. La web se siente más cinemática que tradicional.</p>
+      </div>
+      <div class="pillar reveal reveal-delay-1">
+        <span class="symbol">ii.</span>
+        <h4>Intimidad</h4>
+        <p>Tipografía editorial, ritmo pausado, espacios respirados. Una experiencia que invita a quedarse, no a hacer scroll rápido.</p>
+      </div>
+      <div class="pillar reveal reveal-delay-2">
+        <span class="symbol">iii.</span>
+        <h4>Identidad</h4>
+        <p>Cada detalle —desde el cursor hasta el footer— refuerza la categoría premium. Coherencia absoluta del primer al último píxel.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 09 · ARQUITECTURA ═══════════════ -->
+<section class="architecture" id="architecture">
+  <div class="container">
+    <div class="arch-grid">
+      <div class="label">
+        <div class="section-num reveal">07 — Arquitectura</div>
+        <h2 class="section-title reveal" style="font-size: clamp(32px, 4vw, 52px);">Las <em>secciones</em> que construirán la experiencia.</h2>
+      </div>
+
+      <ul class="arch-list">
+        <li class="arch-item reveal">
+          <span class="num">i</span>
+          <h4>Inicio cinematográfico</h4>
+          <p>Hero a pantalla completa con video o imagen ambient del local. Primera impresión de impacto.</p>
+        </li>
+        <li class="arch-item reveal">
+          <span class="num">ii</span>
+          <h4>Experiencia KÂI</h4>
+          <p>Manifiesto de marca. Qué es KÂI, qué representa, por qué importa.</p>
+        </li>
+        <li class="arch-item reveal">
+          <span class="num">iii</span>
+          <h4>Cocktails &amp; Food</h4>
+          <p>Carta editorial con fotografía cuidada. Productos destacados como piezas de portada.</p>
+        </li>
+        <li class="arch-item reveal">
+          <span class="num">iv</span>
+          <h4>Shishas premium</h4>
+          <p>Sección dedicada con narrativa propia. Elevar el producto a categoría experiencia.</p>
+        </li>
+        <li class="arch-item reveal">
+          <span class="num">v</span>
+          <h4>Ambiente &amp; Galería</h4>
+          <p>Galería visual editorial. Fotografía del local que transmite atmósfera, no producto.</p>
+        </li>
+        <li class="arch-item reveal">
+          <span class="num">vi</span>
+          <h4>Eventos &amp; Live Sports</h4>
+          <p>Calendario actualizable de eventos, partidos y noches especiales. Razón para volver.</p>
+        </li>
+        <li class="arch-item reveal">
+          <span class="num">vii</span>
+          <h4>Reservas online</h4>
+          <p>Sistema integrado. Mesa, fecha, número de personas. Sin fricción, sin llamadas.</p>
+        </li>
+        <li class="arch-item reveal">
+          <span class="num">viii</span>
+          <h4>Instagram integrado</h4>
+          <p>Feed conectado en tiempo real. La web amplifica las redes, no compite con ellas.</p>
+        </li>
+        <li class="arch-item reveal">
+          <span class="num">ix</span>
+          <h4>Contacto &amp; Ubicación</h4>
+          <p>Mapa, horarios, redes y datos. Última sección, máxima claridad de acción.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 10 · BENEFICIOS ═══════════════ -->
+<section class="benefits" id="benefits">
+  <div class="container">
+    <div style="text-align:center; max-width: 800px; margin: 0 auto;">
+      <div class="eyebrow center reveal">08 — Impacto Esperado</div>
+      <h2 class="section-title reveal reveal-delay-1" style="margin-top: 32px;">Beneficios <em>tangibles</em> en dos dimensiones.</h2>
+    </div>
+
+    <div class="benefits-grid">
+      <div class="benefits-col reveal">
+        <h3>Comerciales <em>·</em></h3>
+        <div class="sub">Lo que se mide</div>
+        <ul class="ben-list">
+          <li>
+            <span class="check">›</span>
+            <div>
+              <strong>Aumento directo de reservas</strong>
+              <span>Sistema online que captura demanda 24/7, también fuera de horario.</span>
+            </div>
+          </li>
+          <li>
+            <span class="check">›</span>
+            <div>
+              <strong>Visitas cualificadas desde Google</strong>
+              <span>Posicionamiento local optimizado para búsquedas relevantes en la zona.</span>
+            </div>
+          </li>
+          <li>
+            <span class="check">›</span>
+            <div>
+              <strong>Mayor ticket medio</strong>
+              <span>Una marca premium percibida como tal justifica precios premium.</span>
+            </div>
+          </li>
+          <li>
+            <span class="check">›</span>
+            <div>
+              <strong>Plataforma escalable</strong>
+              <span>Base lista para campañas, eventos privados, colaboraciones y nuevas líneas.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="benefits-col reveal reveal-delay-1">
+        <h3>De Branding <em>·</em></h3>
+        <div class="sub">Lo que se percibe</div>
+        <ul class="ben-list">
+          <li>
+            <span class="check">›</span>
+            <div>
+              <strong>Percepción de categoría premium</strong>
+              <span>Coherencia absoluta entre el ambiente real y la presencia digital.</span>
+            </div>
+          </li>
+          <li>
+            <span class="check">›</span>
+            <div>
+              <strong>Diferenciación radical</strong>
+              <span>Mientras la competencia se queda en redes, KÂI se posiciona como referente.</span>
+            </div>
+          </li>
+          <li>
+            <span class="check">›</span>
+            <div>
+              <strong>Confianza inmediata</strong>
+              <span>Una web cuidada transmite seriedad, profesionalismo y solidez de marca.</span>
+            </div>
+          </li>
+          <li>
+            <span class="check">›</span>
+            <div>
+              <strong>Identidad lifestyle</strong>
+              <span>Sentar las bases para que KÂI evolucione de local a marca reconocible.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 11 · MOBILE ═══════════════ -->
+<section class="mobile-section" id="mobile">
+  <div class="container">
+    <div class="mobile-grid">
+      <div class="mobile-text">
+        <div class="section-num reveal">09 — Mobile Experience</div>
+        <h2 class="reveal reveal-delay-1">Diseñada en <em>mobile-first</em>, pensada en momentos reales.</h2>
+      </div>
+
+      <div class="phone-stage reveal reveal-delay-2">
+        <div class="phone">
+          <div class="notch"></div>
+          <div class="screen">
+            <div class="mini-eyebrow">Social Club · Aguadulce</div>
+            <div class="mini-title">KÂI</div>
+            <div class="mini-italic">Donde la noche se convierte en experiencia.</div>
+            <div class="mini-divider"></div>
+            <div class="mini-cta">Reservar mesa</div>
+            <div class="mini-grid">
+              <div class="mini-card"><em>Cocktails</em></div>
+              <div class="mini-card"><em>Shishas</em></div>
+              <div class="mini-card"><em>Eventos</em></div>
+              <div class="mini-card"><em>Galería</em></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 12 · CIERRE ═══════════════ -->
+<section class="closing" id="closing">
+  <div class="container">
+    <div class="closing-mark">— Cierre —</div>
+    <h2 class="closing-statement reveal">
+      KÂI ya tiene <em>presencia</em>.<br>
+      Es momento de que tenga <em>plataforma</em>.
+    </h2>
+    <p class="closing-sub reveal reveal-delay-1">
+      Una web que esté a la altura del lugar. Una marca digital que sienta lo que ya transmite el local cada noche.
+    </p>
+    <a href="#" class="closing-cta reveal reveal-delay-2">Iniciar el proyecto</a>
+
+    <div class="closing-meta">
+      <span>Aguadulce</span>
+      <span>Almería</span>
+      <span>España</span>
+      <span>MMXXVI</span>
+    </div>
+  </div>
+</section>
+
+<!-- ───── Footer ───── -->
+<footer>
+  <div class="mark-foot">— KÂI Social Club —</div>
+  <div>Propuesta de transformación digital · Documento confidencial</div>
+</footer>
+
+<script>
+// Reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -80px 0px' });
+reveals.forEach(el => observer.observe(el));
+
+// Nav progress active state
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-progress a');
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.dataset.section === id);
+      });
+    }
+  });
+}, { threshold: 0.4 });
+sections.forEach(s => navObserver.observe(s));
+</script>
+
+</body>
+</html>
